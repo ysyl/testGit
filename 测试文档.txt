@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-Creating a new branch 31 quick.
-20.57
-=======
-﻿Creating a new branch 11 quick.
+﻿﻿Creating a new branch 11 quick.
 测试添加下一行
->>>>>>> 033ba62bff871dcc616eccfec244630365081b70
+测试添加第二行
