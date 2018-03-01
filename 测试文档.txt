@@ -1,7 +1,0 @@
-<<<<<<< HEAD
-﻿﻿Creating a new branch 11 quick.
-测试添加下一行
-测试添加第二行
-=======
-﻿三扥三扥东方
->>>>>>> master
