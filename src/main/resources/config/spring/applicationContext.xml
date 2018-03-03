@@ -13,6 +13,5 @@
     <import resource="classpath:config/spring/spring_config.xml" />
     <import resource="classpath:config/spring/spring-mybatis.xml"/>
     <import resource="classpath:config/spring/spring-service.xml"/>
-    <import resource="classpath:config/mybatis/SqlMapConfig.xml" />
     
 </beans>
