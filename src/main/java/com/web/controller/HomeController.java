@@ -1,24 +1,40 @@
 package com.web.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.web.entity.Comment;
 import com.web.entity.User;
+import com.web.mapper.CommentMapper;
 import com.web.mapper.UserMapper;
+import com.web.service.CommentService;
+import com.web.service.UserService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	UserMapper userMapper;
+	UserService userService;
 	
-	@RequestMapping("/home")
+	@Autowired
+	CommentService commentService;
+	
+	@RequestMapping("/index")
 	public String home() {
-		List<User> zhou = userMapper.selectAll();
-		System.out.println(zhou.get(0).getUsername());
+		User zhou12 = userService.findUserById(0L);
+		
+		Comment newComment = new Comment();
+		newComment.setContent("测试内容");
+		newComment.setCreateTime(new Date());
+		newComment.setUser(zhou12);
+
+		commentService.save(newComment);
+		
+		System.out.println(newComment.getId() + "newComment's ID");
 		return "index";
 	}
 }

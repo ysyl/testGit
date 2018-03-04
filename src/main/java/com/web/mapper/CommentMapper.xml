@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.mapper.CommentMapper">
+	<select id="findCommentsByUserId" resultMap="commentMapper">
+		select * from comment, user where user.id = comment.user_id;
+	</select>
+	
+	<select id="findCommentById" resultMap="commentMapper">
+		select * from comment where comment.id = #{id}
+	</select>
+	
+	<select id="findAll" resultMap="commentMapper">
+		select * from comment	
+	</select>
+	
+	<insert id="insert" parameterType="Comment" useGeneratedKeys="true" keyProperty="id">
+		insert into 
+			comment(content, user_id, create_time) 
+		values 
+			(#{content}, ${user.getId()}, ${createTime, jdbcType=datetime})
+	</insert>
+	
+		
+	<resultMap type="Comment" id="commentMapper">
+		<id property="id" column="id"></id>		
+		<result property="createTime" column="create_time"/>
+		<association property="user" column="user_id" javaType="User" select="findUserById" >
+			<id property="id" column="id"/>
+			<result property="username" column="username"/>
+			<result property="createTime" column="create_time"/>
+		</association>
+	</resultMap>
+	
+	<select id="findUserById" resultType="User">
+		select * from user where user.id = #{id} 
+	</select>  
+</mapper> 
