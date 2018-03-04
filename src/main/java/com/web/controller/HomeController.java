@@ -3,6 +3,7 @@ package com.web.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import com.web.mapper.UserMapper;
 import com.web.service.CommentService;
 import com.web.service.UserService;
 
+import web.CommentServiceTest;
+
 @Controller
 public class HomeController {
 	
@@ -23,7 +26,9 @@ public class HomeController {
 	@Autowired
 	CommentService commentService;
 	
-	@RequestMapping("/index")
+	private static Logger log = Logger.getLogger(HomeController.class);
+	
+	@RequestMapping("/home")
 	public String home() {
 		User zhou12 = userService.findUserById(0L);
 		
@@ -34,7 +39,10 @@ public class HomeController {
 
 		commentService.save(newComment);
 		
-		System.out.println(newComment.getId() + "newComment's ID");
+		log.info("fjsdklfjsd");
+		
+		System.out.println(newComment.getId() + "newComment's Idddddd");
+		System.out.println(newComment.getUser().getUsername()); 
 		return "index";
 	}
 }

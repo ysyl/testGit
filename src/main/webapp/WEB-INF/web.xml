@@ -9,10 +9,37 @@
         <param-name>contextConfigLocation</param-name>  
         <param-value>classpath:config/spring/applicationContext.xml</param-value>  
     </context-param>  
+    
+    
+    
+    <!-- 加载log4j的配置文件log4j.properties -->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+    </context-param>
+
+    <!-- 设定刷新日志配置文件的时间间隔，这里设置为10s -->
+    <context-param>
+        <param-name>log4jRefreshInterval</param-name>
+        <param-value>10000</param-value>
+    </context-param>
+    
+        
+<!--   Log4jConfigListener会去读取配置文件;开一条watchdog线程每60秒扫描一下配置文件的变化（
+  这样在web服务启动后再去修改配置文件也不用重新启动web服务了）;
+  并把 web目录的路径压入一个叫webapp.root的系统变量（webapp.root将在log4j.properties文件中使用）。 -->
+    
+    <listener> 
+      <listener-class> 
+         org.springframework.web.util.Log4jConfigListener 
+      </listener-class> 
+   </listener>
   
     <listener>  
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
     </listener>  
+
+   
   <servlet>
   	<servlet-name>springmvc-app</servlet-name>
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

@@ -14,7 +14,7 @@
 	</select>
 	
 	<insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-		insert into USER(username, password) values (#{username}, #{password})
+		insert into USER(username, password, create_time) values (#{username}, #{password}, #{createTime, jdbcType=TIMESTAMP})
 	</insert>
 	
 	<resultMap type="User" id="userMapper">

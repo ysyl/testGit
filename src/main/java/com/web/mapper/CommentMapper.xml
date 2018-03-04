@@ -17,7 +17,7 @@
 		insert into 
 			comment(content, user_id, create_time) 
 		values 
-			(#{content}, ${user.getId()}, ${createTime, jdbcType=datetime})
+			(#{content}, #{user.id}, #{createTime, jdbcType=TIMESTAMP})
 	</insert>
 	
 		

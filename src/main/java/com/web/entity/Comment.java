@@ -28,9 +28,6 @@ public class Comment implements Serializable {
 		this.content = password;
 		this.createTime = create_time;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public Comment() {
 		super();
 		// TODO Auto-generated constructor stub
