@@ -7,14 +7,23 @@ import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.web.entity.Comment;
 import com.web.entity.User;
@@ -40,6 +49,17 @@ public class CommentServiceTest extends AbstractTransactionalJUnit4SpringContext
 	@Resource 
 	private CommentService commentService;
 	
+	@Autowired
+	private WebApplicationContext wac;
+	
+	private MockMvc mockMvc;
+	//建立mockMvc，
+	@BeforeAll
+	public void setUp() {
+		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+	}
+	
+	
 	
 	
 	@Test
@@ -63,6 +83,13 @@ public class CommentServiceTest extends AbstractTransactionalJUnit4SpringContext
 		
 		Comment comment3 = commentService.findCommentById(1L);
 		
-		log.debug(comment3.getUser().getUsername());
+	}
+	
+	@Test
+	public void testRestController() throws Exception {
+		String content = mockMvc.perform(MockMvcRequestBuilders.get("/web/comment/all"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andReturn().getResponse().getContentAsString();
+		log.debug("返回的json ： " + content);
 	}
 }

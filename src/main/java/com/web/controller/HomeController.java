@@ -39,10 +39,6 @@ public class HomeController {
 
 		commentService.save(newComment);
 		
-		log.info("fjsdklfjsd");
-		
-		System.out.println(newComment.getId() + "newComment's Idddddd");
-		System.out.println(newComment.getUser().getUsername()); 
 		return "index";
 	}
 }
