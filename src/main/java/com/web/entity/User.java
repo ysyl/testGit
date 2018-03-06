@@ -1,6 +1,8 @@
 package com.web.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
 		
@@ -10,12 +12,17 @@ public class User implements Serializable {
 		}
 		private String username;
 		private String password;
+		private Date createTime;
+		private List<Comment> comments;
 		
-		public User(String username, String password) {
-			super();
-			this.username = username;
-			this.password = password;
+		public List<Comment> getComments() {
+			return comments;
 		}
+
+		public void setComments(List<Comment> comments) {
+			this.comments = comments;
+		}
+
 		
 		public User() {
 			super();
@@ -34,5 +41,14 @@ public class User implements Serializable {
 		public void setPassword(String password) {
 			this.password = password;
 		}
+
+		public Date getCreateDate() {
+			return createTime;
+		}
+
+		public void setCreateDate(Date createDate) {
+			this.createTime = createDate;
+		}
+		
 		
 }
