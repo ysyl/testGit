@@ -12,6 +12,7 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import MoreVertIcon from 'material-ui-icons/MoreVert';
 import classnames from 'classnames';
 import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
 
 import mediaImg from './img/paella.jpg';
 
@@ -55,14 +56,15 @@ class WeiboCard extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, data} = this.props;
+    const {avatar, username, images, content} = data;
     return (
       <div>
         <Card className={ classes.card }>
           <CardHeader
             avatar={
               <Avatar className={classes.avatar}>
-                Z
+                {avatar}
               </Avatar>
             }
             action={
@@ -70,17 +72,15 @@ class WeiboCard extends Component {
                 <MoreVertIcon />
               </IconButton>
             }
-            title="Title"
-            subheader="subheader"/>
+            title="Title"/>
           <CardMedia
             className={classes.media}
-            image={mediaImg}
+            image={images}
             title="MediaImg"
           />
           <CardContent>
             <Typography component="p">
-              This impressive paella is a perfect party dish and a fun meal to cook together with
-              your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+              {content}
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
@@ -91,16 +91,13 @@ class WeiboCard extends Component {
               <ShareIcon />
             </IconButton>
 
-            <IconButton
-              className={classnames(classes.expend, {
-                [classes.expandOpen] : this.state.expanded
-              })}
+            <Button
               onClick={this.handleExpandClick}
               aria-expanded={this.state.expanded}
               aria-label="Show more"
             >
-              <ExpandMoreIcon />
-            </IconButton>
+              查看评论
+            </Button>
           </CardActions>
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>

@@ -4,7 +4,6 @@ import Reboot from 'material-ui/Reboot';
 import { withStyles } from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
 
 import WeiBoDrawer from "./WeiBoDrawer.js";
 import SimpleActionBar from "./ActionBar.js";

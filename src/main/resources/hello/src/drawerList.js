@@ -10,7 +10,9 @@ import LabelIcon from 'material-ui-icons/Label';
 
 const styles = {
   list: {
-    paddingRight:'2rem'
+  },
+  item: {
+    width:'200'
   }
 }
 
@@ -18,7 +20,7 @@ const DrawerList = props => {
   const { classes } = props;
   return (
     <List className={classes.list} component="nav">
-      <ListItem button>
+      <ListItem button >
         <ListItemIcon>
           <AccountIcon />
         </ListItemIcon>
