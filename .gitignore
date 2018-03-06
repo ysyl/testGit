@@ -2,3 +2,5 @@ target
 .git
 .settings
 .swp
+
+./src/main/resources/hello/node_modules
