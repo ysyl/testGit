@@ -19,6 +19,7 @@
 	<!--注解驱动 mvc:annotion-driven,默认加载很多的参数绑定方法，比如json转换解析器就默认加载了。-->
     <mvc:annotation-driven />
     
+    <mvc:resources mapping="/img/**" location="classpath:/img/" />
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">

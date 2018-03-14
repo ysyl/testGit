@@ -29,15 +29,7 @@
   这样在web服务启动后再去修改配置文件也不用重新启动web服务了）;
   并把 web目录的路径压入一个叫webapp.root的系统变量（webapp.root将在log4j.properties文件中使用）。 -->
     
-    <listener> 
-      <listener-class> 
-         org.springframework.web.util.Log4jConfigListener 
-      </listener-class> 
-   </listener>
-  
-    <listener>  
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
-    </listener>  
+
 
    
   <servlet>

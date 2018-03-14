@@ -3,21 +3,16 @@ package com.web.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Comment implements Serializable {
+public class Weibo implements Serializable {
+
 	private int id;
-	private User arthor;
 	private String content;
+	private User arthor;
 	private Date createAt;
-	private Weibo reply;
+	private String image;
 	
 	public int getId() {
 		return id;
-	}
-	public User getArthor() {
-		return arthor;
-	}
-	public void setArthor(User arthor) {
-		this.arthor = arthor;
 	}
 	public String getContent() {
 		return content;
@@ -25,17 +20,23 @@ public class Comment implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public User getArthor() {
+		return arthor;
+	}
+	public void setArthor(User arthor) {
+		this.arthor = arthor;
+	}
 	public Date getCreateAt() {
 		return createAt;
 	}
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	public Weibo getReply() {
-		return reply;
+	public String getImage() {
+		return image;
 	}
-	public void setReply(Weibo reply) {
-		this.reply = reply;
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	

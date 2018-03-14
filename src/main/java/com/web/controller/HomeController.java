@@ -18,6 +18,7 @@ import com.web.service.UserService;
 import web.CommentServiceTest;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 	
 	@Autowired
@@ -30,15 +31,7 @@ public class HomeController {
 	
 	@RequestMapping("/home")
 	public String home() {
-		User zhou12 = userService.findUserById(0L);
-		
-		Comment newComment = new Comment();
-		newComment.setContent("测试内容");
-		newComment.setCreateTime(new Date());
-		newComment.setUser(zhou12);
-
-		commentService.save(newComment);
-		
+		System.out.println("index");
 		return "index";
 	}
 }
