@@ -1,8 +1,10 @@
 package com.web.shiro;
   
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.shiro.authc.AuthenticationException;  
 import org.apache.shiro.authc.AuthenticationInfo;  
@@ -11,18 +13,23 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthenticatingRealm;
+import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
 import com.web.entity.testUser;
 
-public class ShiroRealm extends AuthenticatingRealm{
+public class ShiroRealm extends AuthorizingRealm{
 
 	private static Map<String,testUser> userMap = new HashMap<String,testUser>();  
 		    static{  
 		    	 //使用Map模拟数据库获取User表信息   
+		    	userMap.put("administrator", new testUser("administrator","5703a57069fce1f17882d283132229e0",false));//密码明文：aaa123  
 		        userMap.put("jack", new testUser("jack","43e66616f8730a08e4bf1663301327b1",false));  
 		        userMap.put("tom", new testUser("tom","3abee8ced79e15b9b7ddd43b95f02f95",false));  
 		        userMap.put("jean", new testUser("jean","1a287acb0d87baded1e79f4b4c0d4f3e",true)); 
@@ -32,7 +39,7 @@ public class ShiroRealm extends AuthenticatingRealm{
 	@Override
 	 protected AuthenticationInfo doGetAuthenticationInfo(  
 			 	        AuthenticationToken token) throws AuthenticationException {
- 
+		System.out.println("[ShiroRealm]");  
 						//1.把AuthenticationToken转换为UsernamePasswordToken  	
 			 	        UsernamePasswordToken userToken = (UsernamePasswordToken) token;  
 			 	          
@@ -70,4 +77,26 @@ public class ShiroRealm extends AuthenticatingRealm{
 			 	        return info;  
 
 		 }
+
+	@Override
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		//1.从principals中获取登录用户的信息  
+	    Object principal = principals.getPrimaryPrincipal();  
+	      System.out.println(principal+"11");
+	      
+	    //2.利用登录用户的信息获取当前用户的角色（有数据库的话，从数据库中查询）  
+	    Set<String> roles = new HashSet<String>();//放置用户角色的set集合(不重复)  
+	    roles.add("user");//放置所有用户都有的普通用户角色  
+	    if("administrator".equals(principal)){ 
+	    	System.out.println("1");
+	        roles.add("admin");//当账号为administrator时，添加admin角色  
+	    }  
+	      
+	    //3.创建SimpleAuthorizationInfo，并设置其roles属性  
+	    SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roles);  
+	      
+	    //4.返回SimpleAuthorizationInfo对象  
+	    return info;  
+
+	}
 } 

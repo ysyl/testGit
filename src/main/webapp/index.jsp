@@ -8,6 +8,6 @@
 <script src=""></script>
 <body>
 <h2>Hello World!</h2> 
-<c:out value="fdsjl"></c:out>
+抱歉，没有权限访问该资源！<br>  
 </body>
 </html>

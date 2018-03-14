@@ -8,12 +8,11 @@
 	<select id="findAllWeiboByUser_id" resultMap="WeiboMapper">
 		select * from weibo, user where user.id = #{id}
 	</select>
-	<resultMap type="Weibo" id="WeiboMapper" autoMapping="false">
+		
+	<resultMap type="Weibo" id="WeiboMapper">
 		<id property="id" column="id"></id>		
 		<result property="createAt" column="create_at"/>
-		<result property="content" column="content" />
-		<result property="image" column="image" />
-		<association property="arthor" column="arthor_id" javaType="User" select="findUserById" >
+		<association property="arthor" column="arthor" javaType="User" select="findUserById" >
 			<id property="id" column="id"/>
 			<result property="username" column="username"/>
 			<result property="createAt" column="create_at"/>

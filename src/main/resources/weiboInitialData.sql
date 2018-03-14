@@ -1,4 +1,4 @@
-﻿USE weibo;
+USE weibo;
 
 insert into user (username, avatar) values ('zhou', 'localhost:8080/web/img/avatar/avatar.jpg');
 insert into user (username, avatar) values ('od', 'localhost:8080/web/img/avatar/avatar.jpg');

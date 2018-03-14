@@ -6,31 +6,49 @@ import java.util.List;
 
 public class User implements Serializable {
 		
-		/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2952588243827466661L;
-	private int id;
-	private String username;
-	private String avatar;
-	public int getId() {
-		return id;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getAvatar() {
-		return avatar;
-	}
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
+		private int id;
+		public int getId() {
+			return id;
+		}
+		private String username;
+		private String password;
+		private Date createTime;
+		private List<Comment> comments;
+		
+		public List<Comment> getComments() {
+			return comments;
+		}
+
+		public void setComments(List<Comment> comments) {
+			this.comments = comments;
+		}
+
+		
+		public User() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		public String getUsername() {
+			return username;
+		}
+		public void setUsername(String username) {
+			this.username = username;
+		}
+		public String getPassword() {
+			return password;
+		}
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+		public Date getCreateDate() {
+			return createTime;
+		}
+
+		public void setCreateDate(Date createDate) {
+			this.createTime = createDate;
+		}
+		
+		
 }

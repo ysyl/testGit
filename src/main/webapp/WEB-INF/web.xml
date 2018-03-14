@@ -1,4 +1,4 @@
-﻿<!DOCTYPE web-app PUBLIC
+<!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
@@ -28,6 +28,7 @@
 <!--   Log4jConfigListener会去读取配置文件;开一条watchdog线程每60秒扫描一下配置文件的变化（
   这样在web服务启动后再去修改配置文件也不用重新启动web服务了）;
   并把 web目录的路径压入一个叫webapp.root的系统变量（webapp.root将在log4j.properties文件中使用）。 -->
+    
 		<filter>  
 	    <filter-name>shiroFilter</filter-name>  
 	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
@@ -40,15 +41,6 @@
 	    <filter-name>shiroFilter</filter-name>  
 	    <url-pattern>/*</url-pattern>  
 	</filter-mapping> 
-	<filter>
-	    <filter-name>cors</filter-name>
-	    <filter-class>com.web.filter.CORSFilter</filter-class>
-	</filter>
-	
-	<filter-mapping>
-	    <filter-name>cors</filter-name>
-	    <url-pattern>/*</url-pattern>
-	</filter-mapping>
 
    
   <servlet>
@@ -65,4 +57,9 @@
      <servlet-name>springmvc-app</servlet-name>
      <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+    <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
 </web-app>

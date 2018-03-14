@@ -9,13 +9,27 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.web.service.shiroService;
 
 @Controller
 @RequestMapping("userAuth")
 public class ShiroTset {
+	
+    @Autowired  
+    private shiroService ShiroService;
+
+    @RequiresRoles({"admin"}) 
+    @RequestMapping("/testShiroAnnocation")  
+    private String testShiroAnnocation(){  
+    	ShiroService.testMethod();  
+        return "redirect:/list.jsp";  
+    }  
 
 	
 	@RequestMapping("login")
@@ -39,6 +53,9 @@ public class ShiroTset {
 	                System.out.println("登录失败！！！"+ae.getMessage());
 	            }
 	        }
+		 else {
+			 
+		 }
 		return "redirect:/list.jsp";
 	} 
 	
