@@ -29,7 +29,7 @@ public class HomeController {
 	
 	private static Logger log = Logger.getLogger(HomeController.class);
 	
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String home() {
 		System.out.println("index");
 		return "index";

@@ -20,6 +20,9 @@
     <mvc:annotation-driven />
     
     <mvc:resources mapping="/img/**" location="classpath:/img/" />
+    <mvc:resources mapping="/static/js/**" location="classpath:/static/js/" />
+    <mvc:resources mapping="/static/css/**" location="classpath:/static/css/" />
+    <mvc:resources mapping="/static/media/**" location="classpath:/static/media/" />
 
 	<mvc:cors>  
         <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800"  
