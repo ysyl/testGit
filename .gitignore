@@ -3,4 +3,8 @@ target
 .settings
 .swp
 
+<<<<<<< HEAD
 ./src/main/resources/hello/node_modules
+=======
+./src/main/resources/hello/node_modules
+>>>>>>> dev
