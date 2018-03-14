@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.mapper.UserMapper">
+	<select id="findAll" resultMap="userMapper">
+		select * from USER
+	</select>
+	
+	<select id="findUserById" parameterType="long" resultMap="userMapper">
+		select * from USER where id = #{id}
+	</select>
+	
+	<select id="findUserByCommentID" parameterType="long" resultMap="userMapper">
+		select * from user ,comment where user.id = comment.user_id and user.id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+		insert into USER(username, password, create_time) values (#{username}, #{password}, #{createTime, jdbcType=TIMESTAMP})
+	</insert>
+	
+	<resultMap type="User" id="userMapper">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<collection property="comments" ofType="Comment">
+			<id property="id" column="id" />
+			<result property="content" column="content" />
+			<result property="createTime" column="create_time" />
+		</collection>
+	</resultMap>
+</mapper>
