@@ -21,6 +21,11 @@
     
     <mvc:resources mapping="/img/**" location="classpath:/img/" />
 
+	<mvc:cors>  
+        <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800"  
+        allowed-methods="GET,POST,PUT,DELETE,PATCH,OPTIONS"/>  
+    </mvc:cors>  
+	
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/jsp/"/>
