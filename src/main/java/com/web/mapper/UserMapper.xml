@@ -5,26 +5,24 @@
 		select * from USER
 	</select>
 	
-	<select id="findUserById" parameterType="long" resultMap="userMapper">
+	<select id="findUserById" parameterType="int" resultMap="userMapper">
 		select * from USER where id = #{id}
 	</select>
 	
-	<select id="findUserByCommentID" parameterType="long" resultMap="userMapper">
-		select * from user ,comment where user.id = comment.user_id and user.id = #{id}
+	<select id="findUserByWeiboId" parameterType="int" resultMap="userMapper">
+		select 
+			user.id, user.username, user.avatar 
+		from user, weibo 
+		where user.id = comment.arthor_id and user.id = #{id}
 	</select>
 	
 	<insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-		insert into USER(username, password, create_time) values (#{username}, #{password}, #{createTime, jdbcType=TIMESTAMP})
+		insert into USER(username, avatar) values (#{username}, #{avatar})
 	</insert>
 	
 	<resultMap type="User" id="userMapper">
 		<id property="id" column="id" />
 		<result property="username" column="username" />
-		<result property="password" column="password" />
-		<collection property="comments" ofType="Comment">
-			<id property="id" column="id" />
-			<result property="content" column="content" />
-			<result property="createTime" column="create_time" />
-		</collection>
+		<result property="avatar" column="avatar" />
 	</resultMap>
 </mapper>

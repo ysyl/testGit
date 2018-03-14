@@ -21,7 +21,11 @@
         <mybatis.version>3.4.2</mybatis.version>
         <!-- shiro版本号 -->
         <shiro.version>1.4.0</shiro.version>
+<<<<<<< HEAD
         <jackson.version>2.9.4</jackson.version>
+=======
+        <jackson.version>2.9.1</jackson.version>
+>>>>>>> origin/dev
   </properties>
   
   <dependencies>

@@ -6,6 +6,6 @@ import com.web.entity.*;
 
 public interface UserMapper {
 	List<User> findAll();
-	User findUserById(long id);
+	User findUserById(int id);
 	int insert(User user);
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Weibo implements Serializable {
 
+	private static final long serialVersionUID = 5663877660433378607L;
 	private int id;
 	private String content;
 	private User arthor;
