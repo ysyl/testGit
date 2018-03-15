@@ -11,10 +11,18 @@ public class ResultComment implements Serializable {
 	private int id;
 	private String content;
 	private Date createAt;
+	private int arthorId;
 	private String arthorName;
 	private int replyWeiboId;
 	private int replyCommentId;
 	
+	
+	public int getArthorId() {
+		return arthorId;
+	}
+	public void setArthorId(int arthorId) {
+		this.arthorId = arthorId;
+	}
 	public int getId() {
 		return id;
 	}

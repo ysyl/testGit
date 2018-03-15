@@ -16,6 +16,13 @@
 		where user.id = comment.arthor_id and user.id = #{id}
 	</select>
 	
+	<select id="findUserByUsername" parameterType="String" resultMap="userMapper">
+		select 
+			u.id, u.username, user.avatar
+		from user as u
+		where u.username = #{username}
+	</select>
+	
 	<insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
 		insert into USER(username, avatar) values (#{username}, #{avatar})
 	</insert>

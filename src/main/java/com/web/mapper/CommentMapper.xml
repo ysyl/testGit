@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.mapper.CommentMapper">
-	<select id="findCommentsByUserId" resultMap="commentMapper">
+	<select id="findResultCommentsByUserId" resultMap="resultCommentMapper">
 		select * from comment, user where user.id = comment.arthor_id;
 	</select>
 	
-	<select id="findCommentById" resultMap="commentMapper">
+	<select id="findResultCommentById" resultMap="resultCommentMapper">
 		select * from comment where comment.id = #{id}
 	</select>
 	
-	<select id="findAllCommentByWeiboId" resultMap="commentMapper">
+	<select id="findAllResultCommentByWeiboId" resultMap="resultCommentMapper">
 		select 
 			c.id, c.content, c.create_at, c.reply_weibo_id, c.reply_comment_id, 
-			u.username as arthor_username
+			u.username as arthor_username, u.id as arthor_id
 		from comment as c, weibo as w , user as u
-		where c.reply_weibo_id = w.id and w.id = #{id} and w.arthor_id = u.id
+		where c.reply_weibo_id = w.id and c.arthor_id = u.id and w.id = #{id} 
 	</select>
 	
-	<select id="findAll" resultMap="commentMapper">
+	<select id="findAllResultComment" resultMap="resultCommentMapper">
 		select * from comment	
 	</select>
 	
-	<insert id="insert" parameterType="Comment" useGeneratedKeys="true" keyProperty="id">
+	<select id="findCommentById" resultMap="commentMapper">
+		select * from comment
+	</select>
+	
+	<insert id="insert" parameterType="ResultComment" useGeneratedKeys="true" keyProperty="id">
 		insert into 
 			comment(content, arthor_id, create_at, reply_weibo_id, reply_comment_id) 
 		values 
-			(#{content}, #{arthor.id}, #{createAt, jdbcType=TIMESTAMP}, #{replyWeibo.id}, #{replyComment.id})
+			(
+				#{content}, #{arthorId}, 
+				#{createAt, jdbcType=TIMESTAMP}, 
+				#{reply_weibo_id}, #{reply_comment_id}
+			)
 	</insert>
 	
 		
-	<resultMap type="ResultComment" id="commentMapper">
+	<resultMap type="ResultComment" id="resultCommentMapper">
 		<id property="id" column="id"></id>		
 		<result property="createAt" column="create_at"/>
 		
@@ -41,8 +49,37 @@
 		</association> -->
 		
 		<result property="content" column="content" />
+		<result property="arthorId" column="arthor_id" />
 		<result property="arthorName" column="arthor_username" />
 		<result property="replyWeiboId" column="reply_weibo_id" />
 		<result property="replyCommentId" column="reply_comment_id" />
 	</resultMap>
+	
+	<resultMap type="Comment" id="commentMapper">
+		<id property="id" column="id" />
+		<result property="content" column="content" />
+		<result property="createAt" column="create_at"/>
+		<association property="arthor" column="arthor_id" javaType="User" select="findUserById" >
+			<id property="id" column="id"/>
+			<result property="username" column="username"/>
+			<result property="createAt" column="create_at"/>
+			<result property="avatar" column="avatar" />
+		</association>
+		
+		<association property="replyWeibo" column="reply_weibo_id" javaType="Weibo" select="findWeiboById" >
+			<id property="id" column="id" />
+		</association>
+		
+		<association property="replyComment" column="reply_comment_id">
+			<id property="id" column="id" />
+		</association>
+	</resultMap>
+	
+	<select id="findUserById">
+		select * from user where user.id = #{id}
+	</select>
+	
+	<select id="findWeiboById">
+		select w.id from weibo as w where w.id = #{id}
+	</select>
 </mapper> 

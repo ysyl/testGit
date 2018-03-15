@@ -7,5 +7,6 @@ import com.web.entity.User;
 public interface UserService {
 	void save(User user);
 	List<User> findAll();
-	User findUserById(int id);
+	User findUser(int id);
+	User findUser(String username);
 }

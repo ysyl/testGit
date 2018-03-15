@@ -16,7 +16,7 @@ public class CommentServiceImp implements CommentService {
 	@Autowired
 	CommentMapper commentMapper;
 	
-	public long save(Comment comment) {
+	public int save(ResultComment comment) {
 		// TODO Auto-generated method stub
 		commentMapper.insert(comment);
 		return comment.getId();
@@ -31,13 +31,13 @@ public class CommentServiceImp implements CommentService {
 		return commentMapper.findCommentsByUserId(userId);
 	}
 
-	public ResultComment findCommentById(int id) {
+	public ResultComment findResultCommentById(int id) {
 		// TODO Auto-generated method stub
-		return commentMapper.findCommentById(id);
+		return commentMapper.findResultCommentById(id);
 	}
 	
-	public List<ResultComment> findAllCommentsByWeiboId(int wid) {
-		return commentMapper.findAllCommentByWeiboId(wid);
+	public List<ResultComment> findAllResultCommentsByWeiboId(int wid) {
+		return commentMapper.findAllResultCommentByWeiboId(wid);
 	}
 
 }

@@ -26,9 +26,13 @@ public class UserServiceImp implements UserService {
 		return userMapper.findAll();
 	}
 
-	public User findUserById(int id) {
+	public User findUser(int id) {
 		// TODO Auto-generated method stub
 		return userMapper.findUserById(id);
+	}
+	
+	public User findUser(String username) {
+		return userMapper.findUserByUsername(username);
 	}
 
 

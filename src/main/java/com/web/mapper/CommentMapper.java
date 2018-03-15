@@ -7,8 +7,9 @@ import com.web.entity.ResultComment;
 
 public interface CommentMapper {
 	List<ResultComment> findCommentsByUserId(long id);
-	ResultComment findCommentById(long id);
-	int insert(Comment comment);
+	ResultComment findResultCommentById(long id);
+	int insert(ResultComment comment);
 	List<ResultComment> findAll();
-	List<ResultComment> findAllCommentByWeiboId(int id);
+	List<ResultComment> findAllResultCommentByWeiboId(int id);
+	List<Comment> findCommentById(int id);
 }
