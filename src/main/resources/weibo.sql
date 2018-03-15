@@ -37,14 +37,16 @@ CREATE TABLE `comment` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
   `content` text COMMENT '评论内容',
   `create_at` timestamp COMMENT '时间',
-  `reply` int(32) DEFAULT NULL COMMENT '微博ID',
+  `reply_weibo_id` int(32) NOT NULL COMMENT '微博ID',
+  `reply_comment_id` int(32) DEFAULT NULL COMMENT '如果非null，则为at回复的comment id',
   `arthor_id` int(32) NOT NULL COMMENT '用户ID',
   PRIMARY KEY (`id`),
-  KEY `reply-weibo` (`reply`),
-  CONSTRAINT `reply-weibo` FOREIGN KEY (`reply`) REFERENCES `weibo` (`id`)
+  KEY `reply-weibo` (`reply_weibo_id`),
+  CONSTRAINT `reply-weibo` FOREIGN KEY (`reply_weibo_id`) REFERENCES `weibo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table comment add constraint fk_user_comments foreign key(arthor_id) references user(id);
+alter table comment add constraint fk_comment_comments foreign key (reply_comment_id) references comment(id);
 /*Data for the table `comment` */
 
 /*Table structure for table `weibo` */

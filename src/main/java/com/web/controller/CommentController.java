@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.entity.Comment;
+import com.web.entity.ResultComment;
 import com.web.service.CommentService;
 
 @RestController
@@ -21,12 +22,17 @@ public class CommentController {
 	CommentService commentService;
 	
 	@GetMapping("/all")
-	public List<Comment> allComments(Model model) {
+	public List<ResultComment> allComments(Model model) {
 		return commentService.findComments();
 	}
+
+	@GetMapping("/arthor")
+	public List<ResultComment> findAllCommentsByUserId(@RequestParam("arthor_id") int uid) {
+		return commentService.findComments(uid);
+	}
 	
-	@GetMapping("/all/user_id={user_id}")
-	public List<Comment> findAllCommentsByUserId(@RequestParam("user_id") long userId) {
-		return commentService.findComments(userId);
+	@GetMapping("/reply")
+	public List<ResultComment> findAllCommentsByWeiboId(@RequestParam("reply") int wid) {
+		return commentService.findAllCommentsByWeiboId(wid);
 	}
 }

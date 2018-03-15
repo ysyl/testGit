@@ -26,9 +26,10 @@ public class UserServiceImp implements UserService {
 		return userMapper.findAll();
 	}
 
-	public User findUserById(Long id) {
+	public User findUserById(int id) {
 		// TODO Auto-generated method stub
 		return userMapper.findUserById(id);
 	}
+
 
 }

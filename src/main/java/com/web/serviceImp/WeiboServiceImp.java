@@ -9,7 +9,7 @@ import com.web.entity.Weibo;
 import com.web.mapper.WeiboMapper;
 import com.web.service.WeiboService;
 
-@Service
+@Service("WeiboService")
 public class WeiboServiceImp implements WeiboService {
 
 	@Autowired

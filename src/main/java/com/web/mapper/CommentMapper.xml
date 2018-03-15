@@ -2,11 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.mapper.CommentMapper">
 	<select id="findCommentsByUserId" resultMap="commentMapper">
-		select * from comment, user where user.id = comment.user_id;
+		select * from comment, user where user.id = comment.arthor_id;
 	</select>
 	
 	<select id="findCommentById" resultMap="commentMapper">
 		select * from comment where comment.id = #{id}
+	</select>
+	
+	<select id="findAllCommentByWeiboId" resultMap="commentMapper">
+		select 
+			c.id, c.content, c.create_at, c.reply_weibo_id, c.reply_comment_id, 
+			u.username as arthor_username
+		from comment as c, weibo as w , user as u
+		where c.reply_weibo_id = w.id and w.id = #{id} and w.arthor_id = u.id
 	</select>
 	
 	<select id="findAll" resultMap="commentMapper">
@@ -15,23 +23,26 @@
 	
 	<insert id="insert" parameterType="Comment" useGeneratedKeys="true" keyProperty="id">
 		insert into 
-			comment(content, user_id, create_time) 
+			comment(content, arthor_id, create_at, reply_weibo_id, reply_comment_id) 
 		values 
-			(#{content}, #{user.id}, #{createTime, jdbcType=TIMESTAMP})
+			(#{content}, #{arthor.id}, #{createAt, jdbcType=TIMESTAMP}, #{replyWeibo.id}, #{replyComment.id})
 	</insert>
 	
 		
-	<resultMap type="Comment" id="commentMapper">
+	<resultMap type="ResultComment" id="commentMapper">
 		<id property="id" column="id"></id>		
-		<result property="createTime" column="create_time"/>
-		<association property="user" column="user_id" javaType="User" select="findUserById" >
+		<result property="createAt" column="create_at"/>
+		
+		<!-- <association property="arthor" column="arthor_id" javaType="User" select="findUserById" >
 			<id property="id" column="id"/>
 			<result property="username" column="username"/>
-			<result property="createTime" column="create_time"/>
-		</association>
+			<result property="createAt" column="create_at"/>
+			<result property="avatar" column="avatar" />
+		</association> -->
+		
+		<result property="content" column="content" />
+		<result property="arthorName" column="arthor_username" />
+		<result property="replyWeiboId" column="reply_weibo_id" />
+		<result property="replyCommentId" column="reply_comment_id" />
 	</resultMap>
-	
-	<select id="findUserById" resultType="User">
-		select * from user where user.id = #{id} 
-	</select>  
 </mapper> 

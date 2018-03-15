@@ -7,5 +7,5 @@ import com.web.entity.User;
 public interface UserService {
 	void save(User user);
 	List<User> findAll();
-	User findUserById(Long id);
+	User findUserById(int id);
 }
