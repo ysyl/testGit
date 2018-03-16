@@ -9,6 +9,14 @@ insert into weibo(arthor_id, content, image) values (1, '测试微薄1', 'http:/
 insert into weibo(arthor_id, content, image) values (2, '测试微薄2', 'http://localhost:8080/img/paella.jpg');
 insert into weibo(arthor_id, content, image) values (3, '测试微薄3', 'http://localhost:8080/img/paella.jpg');
 insert into weibo(arthor_id, content, image) values (1, '测试微薄4', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (1, '测试微薄1', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (2, '测试微薄2', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (3, '测试微薄3', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (1, '测试微薄4', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (1, '测试微薄1', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (2, '测试微薄2', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (3, '测试微薄3', 'http://localhost:8080/img/paella.jpg');
+insert into weibo(arthor_id, content, image) values (1, '测试微薄4', 'http://localhost:8080/img/paella.jpg');
 
 insert into comment(arthor_id, reply_weibo_id, content) values (1, 1, '测试评论1');
 insert into comment(arthor_id, reply_weibo_id, content) values (2, 2, '测试评论2');

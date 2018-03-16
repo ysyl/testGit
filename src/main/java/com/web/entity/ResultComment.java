@@ -13,10 +13,17 @@ public class ResultComment implements Serializable {
 	private Date createAt;
 	private int arthorId;
 	private String arthorName;
+	private String arthorAvatar;
 	private int replyWeiboId;
 	private int replyCommentId;
 	
 	
+	public String getArthorAvatar() {
+		return arthorAvatar;
+	}
+	public void setArthorAvatar(String arthorAvatar) {
+		this.arthorAvatar = arthorAvatar;
+	}
 	public int getArthorId() {
 		return arthorId;
 	}

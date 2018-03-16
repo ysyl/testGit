@@ -12,7 +12,7 @@
 	<select id="findAllResultCommentByWeiboId" resultMap="resultCommentMapper">
 		select 
 			c.id, c.content, c.create_at, c.reply_weibo_id, c.reply_comment_id, 
-			u.username as arthor_username, u.id as arthor_id
+			u.username as arthor_username, u.id as arthor_id, u.avatar as arthor_avatar
 		from comment as c, weibo as w , user as u
 		where c.reply_weibo_id = w.id and c.arthor_id = u.id and w.id = #{id} 
 	</select>
@@ -51,6 +51,7 @@
 		<result property="content" column="content" />
 		<result property="arthorId" column="arthor_id" />
 		<result property="arthorName" column="arthor_username" />
+		<result property="arthorAvatar" column="arthor_avatar" />
 		<result property="replyWeiboId" column="reply_weibo_id" />
 		<result property="replyCommentId" column="reply_comment_id" />
 	</resultMap>
