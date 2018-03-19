@@ -64,24 +64,6 @@ public class CommentServiceTest extends AbstractTransactionalJUnit4SpringContext
 	
 	@Test
 	public void testCommentService() {
-		User zhou = userService.findUserById(1L);
-		Comment comment = new Comment();
-		comment.setContent("测试内容");
-		comment.setCreateTime(new Date());
-		comment.setUser(zhou);
-		commentService.save(comment);
-
-		Comment comment2 = new Comment();
-		comment2.setContent("测试内容2");
-		comment2.setCreateTime(new Date());
-		comment2.setUser(zhou);
-		commentService.save(comment2);
-		
-		
-		List<Comment> comments = commentService.findComments(zhou.getId());
-		
-		
-		Comment comment3 = commentService.findCommentById(1L);
 		
 	}
 	
