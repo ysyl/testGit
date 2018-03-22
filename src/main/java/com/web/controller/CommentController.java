@@ -33,8 +33,8 @@ public class CommentController {
 		return commentService.findComments();
 	}
 
-	@GetMapping("/arthor")
-	public List<ResultComment> findAllCommentsByUserId(@RequestParam("arthor_id") int uid) {
+	@GetMapping("/author")
+	public List<ResultComment> findAllCommentsByUserId(@RequestParam("author_id") int uid) {
 		return commentService.findComments(uid);
 	}
 	

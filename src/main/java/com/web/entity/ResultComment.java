@@ -11,33 +11,33 @@ public class ResultComment implements Serializable {
 	private int id;
 	private String content;
 	private Date createAt;
-	private int arthorId;
-	private String arthorName;
-	private String arthorAvatar;
+	private int authorId;
+	private String authorName;
+	private String authorAvatar;
 	private int replyWeiboId;
 	private int replyCommentId;
 	
 	
-	public String getArthorAvatar() {
-		return arthorAvatar;
+	public String getauthorAvatar() {
+		return authorAvatar;
 	}
-	public void setArthorAvatar(String arthorAvatar) {
-		this.arthorAvatar = arthorAvatar;
+	public void setauthorAvatar(String authorAvatar) {
+		this.authorAvatar = authorAvatar;
 	}
-	public int getArthorId() {
-		return arthorId;
+	public int getauthorId() {
+		return authorId;
 	}
-	public void setArthorId(int arthorId) {
-		this.arthorId = arthorId;
+	public void setauthorId(int authorId) {
+		this.authorId = authorId;
 	}
 	public int getId() {
 		return id;
 	}
-	public String getArthorName() {
-		return arthorName;
+	public String getauthorName() {
+		return authorName;
 	}
-	public void setArthorName(String arthorName) {
-		this.arthorName = arthorName;
+	public void setauthorName(String authorName) {
+		this.authorName = authorName;
 	}
 	public String getContent() {
 		return content;

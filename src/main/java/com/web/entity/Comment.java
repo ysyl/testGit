@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Comment implements Serializable {
 	private int id;
-	private User arthor;
+	private User author;
 	private String content;
 	private Date createAt;
 	private Weibo replyWeibo;
@@ -34,11 +34,11 @@ public class Comment implements Serializable {
 	public int getId() {
 		return id;
 	}
-	public User getArthor() {
-		return arthor;
+	public User getauthor() {
+		return author;
 	}
-	public void setArthor(User arthor) {
-		this.arthor = arthor;
+	public void setauthor(User author) {
+		this.author = author;
 	}
 	public String getContent() {
 		return content;

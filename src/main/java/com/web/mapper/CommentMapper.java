@@ -3,7 +3,7 @@ package com.web.mapper;
 import java.util.List;
 
 import com.web.entity.Comment;
-import com.web.entity.ResultComment;
+import com.web.entity.ResultComment; 
 
 public interface CommentMapper {
 	List<ResultComment> findCommentsByUserId(long id);

@@ -11,7 +11,7 @@ public class Weibo implements Serializable {
 	private static final long serialVersionUID = 5663877660433378607L;
 	private int id;
 	private String content;
-	private User arthor;
+	private User author;
 	private Date createAt;
 	private String image;
 	
@@ -24,11 +24,11 @@ public class Weibo implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public User getArthor() {
-		return arthor;
+	public User getauthor() {
+		return author;
 	}
-	public void setArthor(User arthor) {
-		this.arthor = arthor;
+	public void setauthor(User author) {
+		this.author = author;
 	}
 	public Date getCreateAt() {
 		return createAt;

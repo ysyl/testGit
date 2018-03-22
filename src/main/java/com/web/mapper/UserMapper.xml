@@ -13,7 +13,7 @@
 		select 
 			user.id, user.username, user.avatar 
 		from user, weibo 
-		where user.id = comment.arthor_id and user.id = #{id}
+		where user.id = comment.author_id and user.id = #{id}
 	</select>
 	
 	<select id="findUserByUsername" parameterType="String" resultMap="userMapper">

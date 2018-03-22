@@ -14,7 +14,7 @@
 		<result property="createAt" column="create_at"/>
 		<result property="content" column="content" />
 		<result property="image" column="image" />
-		<association property="arthor" column="arthor_id" javaType="User" select="findUserById" >
+		<association property="author" column="author_id" javaType="User" select="findUserById" >
 			<id property="id" column="id"/>
 			<result property="username" column="username"/>
 			<result property="createAt" column="create_at"/>
